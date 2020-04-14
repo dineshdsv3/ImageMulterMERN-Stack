@@ -8,29 +8,34 @@ class App extends React.Component {
 
 	onChangeHandler = (event) => {
 		this.setState({
-			selectedFile: event.target.files[0],
+			selectedFile: event.target.files,
 			loaded: 0,
 		});
-  };
-  
-  onClickHandler = (e) => {
-    e.preventDefault();
-    const data = new FormData() 
-    data.append('file', this.state.selectedFile)
-    data.append('Count', 23)
-    // console.log(data)
-    axios.post("http://localhost:8000/upload", data, { // receive two parameter endpoint url ,form data 
-      })
-      .then(res => { // then print response status
-        console.log(res)
-      })
-}
+	};
+
+	onClickHandler = (e) => {
+		e.preventDefault();
+		const data = new FormData();
+		for (var x = 0; x < this.state.selectedFile.length; x++) {
+			data.append('file', this.state.selectedFile[x]);
+		}
+		// console.log(data)
+		axios
+			.post('http://localhost:8000/upload', data, {
+				// receive two parameter endpoint url ,form data
+			})
+			.then((res) => {
+				// then print response status
+				console.log(res);
+			});
+	};
 	render() {
 		return (
 			<div>
-				<input type="file" name="file" onChange={this.onChangeHandler} />
-        <button type="button" onClick={this.onClickHandler}>Upload</button> 
-
+				<input type="file" name="file" multiple onChange={this.onChangeHandler} />
+				<button type="button" onClick={this.onClickHandler}>
+					Upload
+				</button>
 			</div>
 		);
 	}
