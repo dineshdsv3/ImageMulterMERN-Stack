@@ -1,0 +1,14 @@
+Completed tasks by week 4
+
+1. Added Code on react front-end for login and signup along with the type of user(Investor & Provider) and redirect to page based on the user type.
+2. Added Comic Creation code in smart contract with details like id, ComicName, ComicIssueNo, IssueInfo, Description, price & owner.
+3. Added front end code in react to create comic with the address as a owner.
+4. Added Purchase Comic code in the smart contract logic
+5. Added Front end code in react to purchase comic with the help of adress detected from metamask
+6. Change of ownership from one address to another after its purchased
+
+
+Pending Tasks to complete by this week:
+
+1. Transfer of assets after changing the ownership(Buying the comic)
+2. JWT token authentication for every page

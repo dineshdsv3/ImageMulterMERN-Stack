@@ -2,6 +2,8 @@ var express = require('express');
 var app = express();
 var multer = require('multer')
 var cors = require('cors');
+require('./db')
+var Image = require('./imageModel');
 
 app.use(cors())
 
@@ -24,7 +26,12 @@ app.post('/upload',function(req, res) {
            } else if (err) {
                return res.status(500).json(err)
            }
-      return res.status(200).send(req.file)
+           const image = new Image({productImage: req.files[0].path})
+           image.save().then(result => {
+               console.log(result)
+               res.send({message:"Image Added to DB"})
+           })
+    //  console.log(res.file)
 
     })
 

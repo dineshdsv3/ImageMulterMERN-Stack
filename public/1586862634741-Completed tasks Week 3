@@ -1,0 +1,11 @@
+1) Started Backend
+2) Initialized git repository
+3) Blockchain Setup (Truffle, Ganacce & Metamask) and configuration completed 
+4) Started Express server
+5) Initialized React App
+6) Started mongoDb Atlas with sample cluster
+7) Generated Signup and login forms using reactjs
+8) Started writing Backend logic for user registration
+9) Completed writing Backned logic with JWT token authentication
+10) Started writing smart contract logic and tested using ganache blockchain and metamask in google chrome.
+ 
