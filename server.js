@@ -6,6 +6,7 @@ require('./db')
 var Image = require('./imageModel');
 
 app.use(cors())
+app.use('/public',express.static('public'))
 
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -36,6 +37,15 @@ app.post('/upload',function(req, res) {
     })
 
 });
+
+app.get('/allImages', (req,res) => {
+    Image.find((err, result) => {
+       if(!err) {
+       console.log(result);
+        res.send(result)
+       } 
+    })
+})
 
 app.listen(8000, function() {
 

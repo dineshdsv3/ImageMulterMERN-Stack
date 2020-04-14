@@ -4,7 +4,21 @@ import axios from 'axios';
 class App extends React.Component {
 	state = {
 		selectedFile: null,
+		imageData: [],
 	};
+
+	componentDidMount() {
+		this.getImages();
+	}
+
+	getImages() {
+		axios.get('http://localhost:8000/allImages').then((res) => {
+			res.data.map((ele) => {
+				this.setState({ imageData: [...this.state.imageData, ele] });
+			});
+			console.log(this.state.imageData);
+		});
+	}
 
 	onChangeHandler = (event) => {
 		this.setState({
@@ -36,6 +50,25 @@ class App extends React.Component {
 				<button type="button" onClick={this.onClickHandler}>
 					Upload
 				</button>
+
+				<table>
+					<thead>
+						<tr>
+							<th>Name</th>
+							<th>Image</th>
+						</tr>
+					</thead>
+					<tbody>
+						{this.state.imageData.map((ele, ind) => (
+							<tr key={ele._id}>
+								<td>{ele._id}</td>
+								<td>
+									<img src={`http://localhost:8000/${ele.productImage}`} />
+								</td>
+							</tr>
+						))}
+					</tbody>
+				</table>
 			</div>
 		);
 	}
